@@ -1,0 +1,149 @@
+# .gitignore for peft_llm
+
+# =========================
+
+# Python
+
+# =========================
+
+**pycache**/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+build/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# =========================
+
+# Virtual environments
+
+# =========================
+
+.env
+.venv
+venv/
+env/
+conda_env/
+
+# =========================
+
+# Jupyter
+
+# =========================
+
+.ipynb_checkpoints/
+
+# =========================
+
+# IDE / Editor
+
+# =========================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# =========================
+
+# HuggingFace / cache
+
+# =========================
+
+hf_cache/
+.cache/huggingface/
+
+# =========================
+
+# Logs
+
+# =========================
+
+logs/*.err
+logs/*.out
+logs/*.log
+
+# Keep log directory
+
+!logs/.gitkeep
+
+# =========================
+
+# Training outputs
+
+# =========================
+
+outputs/**/checkpoint-*/
+outputs/**/checkpoints/
+outputs/**/*.bin
+outputs/**/*.pt
+outputs/**/*.pth
+outputs/**/*.ckpt
+
+# Large adapter weights
+
+outputs/**/adapter/adapter_model.safetensors
+outputs/**/adapter/adapter_model.bin
+
+# =========================
+
+# Keep useful experiment artifacts
+
+# =========================
+
+!outputs/**/generation_metrics.json
+!outputs/**/eval_loss_metrics.json
+!outputs/**/train_metrics.json
+!outputs/**/parameter_stats.json
+!outputs/**/gpu_stats.json
+!outputs/**/config.json
+
+# Optional: keep adapter configs only
+
+!outputs/**/adapter/adapter_config.json
+
+# =========================
+
+# Reports / figures
+
+# =========================
+
+reports/*.png
+reports/*.pdf
+reports/*.csv
+reports/*.md
+
+# =========================
+
+# SLURM temp files
+
+# =========================
+
+slurm-*.out
+
+# =========================
+
+# Archives
+
+# =========================
+
+*.tar.gz
+*.zip
+
+# =========================
+
+# Environment exports
+
+# =========================
+
+# Keep these for reproducibility
+
+!requirements.txt
+!environment.yml

@@ -1,0 +1,3 @@
+Full fine-tuning was attempted on Qwen2.5-1.5B-Instruct using a single V100 16GB GPU.
+The run failed during AdamW optimizer state allocation with CUDA out-of-memory.
+This confirms that full fine-tuning is not feasible under the same memory budget used by PEFT methods.

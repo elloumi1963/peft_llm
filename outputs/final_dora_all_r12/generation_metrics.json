@@ -1,0 +1,20 @@
+{
+  "rouge1": 0.4574513622326687,
+  "rouge2": 0.2065877819431801,
+  "rougeL": 0.3643286603151745,
+  "rougeLsum": 0.36440169851136206,
+  "sacrebleu": 13.848035569010358,
+  "bertscore_precision": 0.9113952708244324,
+  "bertscore_recall": 0.9138229078054428,
+  "bertscore_f1": 0.9124323419729868,
+  "distinct_1": 0.3500080684202033,
+  "distinct_2": 0.8188909615058504,
+  "prediction_words_mean": 20.656666666666666,
+  "prediction_words_std": 10.35336284606225,
+  "reference_words_mean": 19.88,
+  "length_ratio_pred_ref": 1.0390677397719652,
+  "empty_prediction_count": 0,
+  "generation_time_total_s": 1036.6386400534539,
+  "generation_time_mean_s": 3.4554621335115128,
+  "tokens_per_second_mean": 7.87052092743976
+}

@@ -1,0 +1,6 @@
+{
+  "cuda_available": true,
+  "gpu_name": "NVIDIA L40S",
+  "max_memory_allocated_mb": 5083.9599609375,
+  "max_memory_reserved_mb": 8920.0
+}
