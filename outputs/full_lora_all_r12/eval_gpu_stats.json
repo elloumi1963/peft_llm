@@ -1,0 +1,6 @@
+{
+  "cuda_available": true,
+  "gpu_name": "Tesla V100-PCIE-16GB",
+  "max_memory_allocated_mb": 4287.68994140625,
+  "max_memory_reserved_mb": 4670.0
+}

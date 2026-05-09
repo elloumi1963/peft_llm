@@ -9,16 +9,12 @@
 #SBATCH --time=08:00:00
 
 cd ~/scratch/peft_llm_benchmark || exit 1
-mkdir -p logs outputs reports
 
-source ~/.bashrc
-conda activate ~/scratch/conda_envs/llm_peft
+mkdir -p logs outputs reports
 
 export PYTHONPATH=src
 export HF_HOME=~/scratch/hf_cache
 export TOKENIZERS_PARALLELISM=false
 
-rm -rf outputs/final_lora_all_r12
-
-python scripts/train.py \
+~/scratch/conda_envs/llm_peft/bin/python scripts/train.py \
   --config configs/final_lora_all_r12.yaml
