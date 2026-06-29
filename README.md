@@ -20,94 +20,97 @@ The objective is to identify which PEFT strategy provides the best trade-off bet
 
 ## Repository Structure
 
-```
-peft_llm/
-│
-├── configs/                 # YAML configuration files for each experiment
-│
-├── jobs/                    # SLURM scripts for GPU cluster execution
-│
-├── outputs/
-│   ├── base_final/          # Baseline evaluation
-│   ├── final_lora_all_r12/  # Final LoRA experiment
-│   ├── final_dora_all_r12/  # Final DoRA experiment
-│   └── final_adalora_all/   # Final AdaLoRA experiment
-│
+```text
+.
+├── configs/                # Training and evaluation configurations
+├── jobs/                   # SLURM job scripts
+├── outputs/                # Saved metrics and experiment outputs
+├── reports/                # Analysis reports and extracted logs
 ├── scripts/
-│   ├── train.py             # Fine-tuning entry point
-│   ├── evaluate.py          # Model evaluation
-│   ├── generate.py          # Generate summaries
-│   └── ...
-│
+│   ├── train.py            # Training entry point
+│   ├── eval.py             # Evaluation entry point
+│   └── compare_runs.py     # Compare multiple experiments
 ├── src/
-│   ├── dataset.py           # Dataset preprocessing
-│   ├── model.py             # PEFT model creation
-│   ├── metrics.py           # ROUGE/BLEU/BERTScore computation
-│   └── ...
-│
+│   └── peft_llm/
+│       ├── data.py         # Dataset loading and preprocessing
+│       ├── generation.py   # Text generation utilities
+│       ├── metrics.py      # ROUGE, BLEU and BERTScore computation
+│       ├── model.py        # PEFT model construction
+│       └── utils.py
 ├── requirements.txt
+├── environment.yml
 └── README.md
 ```
+
+---
+
 ## Installation
 
-Clone the repository
+Clone the repository and create the environment:
 
 ```bash
 git clone https://github.com/elloumi1963/peft_llm.git
-
 cd peft_llm
 ```
 
-Install dependencies
+Using Conda (recommended):
+
+```bash
+conda env create -f environment.yml
+conda activate llm_peft
+```
+
+or using pip:
 
 ```bash
 pip install -r requirements.txt
 ```
 
+---
+
 ## Running Experiments
 
-### Baseline Evaluation
+### Train a model
 
 ```bash
-python scripts/evaluate.py \
-    --config configs/base.yaml
+python scripts/train.py --config configs/lora.yaml
 ```
 
----
-
-### Train LoRA
+or
 
 ```bash
-python scripts/train.py \
-    --config configs/lora_r12.yaml
+python scripts/train.py --config configs/dora.yaml
 ```
 
----
-
-### Train DoRA
+or
 
 ```bash
-python scripts/train.py \
-    --config configs/dora_r12.yaml
+python scripts/train.py --config configs/adalora.yaml
 ```
 
----
-
-### Train AdaLoRA
+### Evaluate a trained model
 
 ```bash
-python scripts/train.py \
-    --config configs/adalora.yaml
+python scripts/eval.py \
+    --config configs/lora.yaml \
+    --checkpoint outputs/final_lora_all_r12/adapter
 ```
 
----
+The evaluation computes:
 
-### Evaluate a Trained Model
+* ROUGE-1 / ROUGE-2 / ROUGE-L
+* SacreBLEU
+* BERTScore
+* Generation latency
+* Tokens generated per second
+
+### Compare multiple runs
 
 ```bash
-python scripts/evaluate.py \
-    --checkpoint outputs/final_lora_all_r12/checkpoint-best
+python scripts/compare_runs.py
 ```
+
+This script aggregates experiment results and facilitates comparison across different PEFT methods.
 
 # Experimental Results
 
