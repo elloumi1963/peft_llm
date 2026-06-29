@@ -1,3 +1,23 @@
+# Parameter-Efficient Fine-Tuning of Large Language Models for Dialogue Summarization
+
+## Project Overview
+
+Large Language Models achieve strong performance on text generation tasks but are expensive to fine-tune because updating billions of parameters requires substantial computational resources and GPU memory.
+
+Parameter-Efficient Fine-Tuning (PEFT) addresses this challenge by updating only a small subset of parameters while keeping the pretrained model frozen.
+
+This project investigates whether PEFT methods can effectively adapt a **1.5B-parameter instruction-tuned language model** to the **dialogue summarization** task while maintaining high performance and significantly reducing training cost.
+
+Using **Qwen2.5-1.5B-Instruct** and the **SAMSum** dataset, we compare three popular PEFT approaches:
+
+- **LoRA (Low-Rank Adaptation)**
+- **DoRA (Weight-Decomposed Low-Rank Adaptation)**
+- **AdaLoRA (Adaptive Low-Rank Adaptation)**
+
+All methods are trained under the same experimental setting and evaluated using standard summarization metrics including **ROUGE**, **BLEU**, and **BERTScore**.
+
+The objective is to identify which PEFT strategy provides the best trade-off between summarization quality, parameter efficiency, and computational cost.
+
 # Experimental Results
 
 ## Training Configuration
