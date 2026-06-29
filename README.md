@@ -18,6 +18,97 @@ All methods are trained under the same experimental setting and evaluated using 
 
 The objective is to identify which PEFT strategy provides the best trade-off between summarization quality, parameter efficiency, and computational cost.
 
+## Repository Structure
+
+```
+peft_llm/
+│
+├── configs/                 # YAML configuration files for each experiment
+│
+├── jobs/                    # SLURM scripts for GPU cluster execution
+│
+├── outputs/
+│   ├── base_final/          # Baseline evaluation
+│   ├── final_lora_all_r12/  # Final LoRA experiment
+│   ├── final_dora_all_r12/  # Final DoRA experiment
+│   └── final_adalora_all/   # Final AdaLoRA experiment
+│
+├── scripts/
+│   ├── train.py             # Fine-tuning entry point
+│   ├── evaluate.py          # Model evaluation
+│   ├── generate.py          # Generate summaries
+│   └── ...
+│
+├── src/
+│   ├── dataset.py           # Dataset preprocessing
+│   ├── model.py             # PEFT model creation
+│   ├── metrics.py           # ROUGE/BLEU/BERTScore computation
+│   └── ...
+│
+├── requirements.txt
+└── README.md
+```
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/elloumi1963/peft_llm.git
+
+cd peft_llm
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Running Experiments
+
+### Baseline Evaluation
+
+```bash
+python scripts/evaluate.py \
+    --config configs/base.yaml
+```
+
+---
+
+### Train LoRA
+
+```bash
+python scripts/train.py \
+    --config configs/lora_r12.yaml
+```
+
+---
+
+### Train DoRA
+
+```bash
+python scripts/train.py \
+    --config configs/dora_r12.yaml
+```
+
+---
+
+### Train AdaLoRA
+
+```bash
+python scripts/train.py \
+    --config configs/adalora.yaml
+```
+
+---
+
+### Evaluate a Trained Model
+
+```bash
+python scripts/evaluate.py \
+    --checkpoint outputs/final_lora_all_r12/checkpoint-best
+```
+
 # Experimental Results
 
 ## Training Configuration
